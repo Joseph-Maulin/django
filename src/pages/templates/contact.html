@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Contacts</h1>
+
+<h2>{{my_text|title}}</h2>
+<h2>{{my_number|safe}}</h2>
+<h2>my list:</h2>
+{% for i in my_list %}
+  <h2>&emsp;{{i|add:10}}</h2>
+{% endfor %}
+{% endblock %}
