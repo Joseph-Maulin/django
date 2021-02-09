@@ -14,18 +14,29 @@ def product_detail_view(request, *args, **kwargs):
 
 
 def product_create_view(request, *args, **kwargs):
+    form = ProductForm(request.POST or None)
+    if form.is_valid():
+        form.save()
+        form = ProductForm()
 
-
-    if request.method == "POST":
-        form = RawProductForm(request.POST)
-        if form.is_valid():
-            print(form.cleaned_data)
-            Product.objects.create(**form.cleaned_data)
-        else:
-            print(form.errors)
-
-    form = RawProductForm()
     context = {
         "form" : form
     }
     return render(request, "create.html", context)
+
+# def product_create_view(request, *args, **kwargs):
+#
+#
+#     if request.method == "POST":
+#         form = RawProductForm(request.POST)
+#         if form.is_valid():
+#             print(form.cleaned_data)
+#             Product.objects.create(**form.cleaned_data)
+#         else:
+#             print(form.errors)
+#
+#     form = RawProductForm()
+#     context = {
+#         "form" : form
+#     }
+#     return render(request, "create.html", context)
