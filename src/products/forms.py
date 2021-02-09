@@ -4,7 +4,7 @@ from .models import Product
 
 class ProductForm(forms.ModelForm):
     title = forms.CharField(label='', widget=forms.TextInput(attrs={"placeholder":"Title"}))
-    email = forms.EmailField()
+    email = forms.EmailField(required=False)
     description = forms.CharField(
                         required=False,
                         widget=forms.Textarea(
